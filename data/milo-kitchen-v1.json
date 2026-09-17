@@ -32,7 +32,7 @@
   ],
   "cameras": [
     { "camera_id": "CAM_KITCHEN_MASTER_WIDE", "name": "Master Wide", "position": [2.35, 1.55, 2.15], "target": [-0.2, 0.95, -0.6], "fov": 55, "aspect": 1.777 },
-    { "camera_id": "CAM_KITCHEN_REVERSE", "name": "Reverse", "position": [-2.2, 1.45, -1.55], "target": [0.6, 0.9, 0.9], "fov": 52, "aspect": 1.777 },
+    { "camera_id": "CAM_KITCHEN_REVERSE", "name": "Reverse", "position": [0.15, 1.72, -1.48], "target": [0.50, 0.72, 1.85], "fov": 52, "aspect": 1.777 },
     { "camera_id": "CAM_KITCHEN_COUNTER", "name": "Counter", "position": [1.35, 1.25, -0.15], "target": [0.05, 0.95, -2.05], "fov": 50, "aspect": 1.777 },
     { "camera_id": "CAM_KITCHEN_TABLE", "name": "Table", "position": [0.35, 1.2, 1.85], "target": [1.85, 0.75, 0.45], "fov": 48, "aspect": 1.777 },
     { "camera_id": "CAM_KITCHEN_DOOR", "name": "Door", "position": [-2.55, 1.35, 1.85], "target": [0.2, 1.0, -0.4], "fov": 58, "aspect": 1.777 }
@@ -58,7 +58,5 @@
   "story_props": [
     { "object_id": "COOKIE_001", "object_name": "Cookie", "object_type": "story_prop", "position": [0.22, 0.96, 0.12], "rotation": [0, 0.3, 0], "dimensions": [0.12, 0.04, 0.12], "held_by": null }
   ],
-  "placeholders": [
-    { "object_id": "MILO_PLACEHOLDER", "object_name": "Milo", "object_type": "character_placeholder", "position": [1.15, 0.0, 0.95], "rotation": [0, 2.4, 0], "height": 0.42 }
-  ]
+  "placeholders": []
 }
