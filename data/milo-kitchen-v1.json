@@ -1,1 +1,64 @@
-PLACEHOLDER
+{
+  "environment_id": "ENV_MILO_KITCHEN",
+  "environment_version": "1.0",
+  "name": "Milo Kitchen",
+  "locked": true,
+  "style": "warm cozy stylized family kitchen",
+  "room_dimensions": { "width": 6.0, "depth": 5.0, "height": 2.7 },
+  "materials": [
+    { "material_id": "MAT_CREAM_PAINT", "color": "#E8DCC8", "roughness": 0.72, "metalness": 0.0 },
+    { "material_id": "MAT_WARM_WOOD_FLOOR", "color": "#8B5A2B", "roughness": 0.55, "metalness": 0.0, "uv_rotation": 0 },
+    { "material_id": "MAT_WHITE_APPLIANCE", "color": "#F4F1EA", "roughness": 0.35, "metalness": 0.15 },
+    { "material_id": "MAT_WARM_WOOD_FURNITURE", "color": "#A06A3C", "roughness": 0.5, "metalness": 0.0 },
+    { "material_id": "MAT_SOFT_WHITE_TRIM", "color": "#F7F4EE", "roughness": 0.45, "metalness": 0.0 },
+    { "material_id": "MAT_LIGHT_SAGE", "color": "#B7C4B0", "roughness": 0.65, "metalness": 0.0 },
+    { "material_id": "MAT_CABINET_CREAM", "color": "#E4D5B8", "roughness": 0.48, "metalness": 0.02 },
+    { "material_id": "MAT_COUNTER_STONE", "color": "#D9D2C5", "roughness": 0.4, "metalness": 0.05 },
+    { "material_id": "MAT_WINDOW_GLASS", "color": "#C8E4F5", "roughness": 0.08, "metalness": 0.0, "transparent": true, "opacity": 0.35 },
+    { "material_id": "MAT_SINK_METAL", "color": "#C9CDD1", "roughness": 0.25, "metalness": 0.7 }
+  ],
+  "lights": [
+    { "light_id": "LIGHT_SUN_WINDOW", "type": "directional", "color": "#FFE6B8", "intensity": 1.35, "position": [0.4, 3.2, -4.2], "target": [0, 1.0, 0] },
+    { "light_id": "LIGHT_AMBIENT", "type": "ambient", "color": "#FFF3E0", "intensity": 0.55 },
+    { "light_id": "LIGHT_FILL", "type": "hemisphere", "sky": "#FFF6E8", "ground": "#8B6A4A", "intensity": 0.45 },
+    { "light_id": "LIGHT_ISLAND_WARM", "type": "point", "color": "#FFD9A0", "intensity": 1.1, "position": [0.15, 2.35, 0.35], "distance": 6 }
+  ],
+  "zones": [
+    { "zone_id": "ZONE_SINK", "name": "sink wall", "center": [0, 0, -1.85] },
+    { "zone_id": "ZONE_ISLAND", "name": "island", "center": [0.1, 0, 0.2] },
+    { "zone_id": "ZONE_TABLE", "name": "table", "center": [1.85, 0, 0.55] },
+    { "zone_id": "ZONE_FRIDGE", "name": "fridge", "center": [-2.25, 0, -1.7] },
+    { "zone_id": "ZONE_DOOR", "name": "doorway", "center": [-2.85, 0, 0.4] }
+  ],
+  "cameras": [
+    { "camera_id": "CAM_KITCHEN_MASTER_WIDE", "name": "Master Wide", "position": [2.35, 1.55, 2.15], "target": [-0.2, 0.95, -0.6], "fov": 55, "aspect": 1.777 },
+    { "camera_id": "CAM_KITCHEN_REVERSE", "name": "Reverse", "position": [-2.2, 1.45, -1.55], "target": [0.6, 0.9, 0.9], "fov": 52, "aspect": 1.777 },
+    { "camera_id": "CAM_KITCHEN_COUNTER", "name": "Counter", "position": [1.35, 1.25, -0.15], "target": [0.05, 0.95, -2.05], "fov": 50, "aspect": 1.777 },
+    { "camera_id": "CAM_KITCHEN_TABLE", "name": "Table", "position": [0.35, 1.2, 1.85], "target": [1.85, 0.75, 0.45], "fov": 48, "aspect": 1.777 },
+    { "camera_id": "CAM_KITCHEN_DOOR", "name": "Door", "position": [-2.55, 1.35, 1.85], "target": [0.2, 1.0, -0.4], "fov": 58, "aspect": 1.777 }
+  ],
+  "objects": [
+    { "object_id": "KITCHEN_FLOOR_001", "object_name": "Floor", "object_type": "floor", "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [6.0, 0.06, 5.0], "material_id": "MAT_WARM_WOOD_FLOOR", "locked": true },
+    { "object_id": "KITCHEN_CEILING_001", "object_name": "Ceiling", "object_type": "ceiling", "position": [0, 2.7, 0], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [6.0, 0.04, 5.0], "material_id": "MAT_SOFT_WHITE_TRIM", "locked": true },
+    { "object_id": "KITCHEN_WALL_BACK_001", "object_name": "Back Wall", "object_type": "wall", "position": [0, 1.35, -2.5], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [6.0, 2.7, 0.12], "material_id": "MAT_CREAM_PAINT", "locked": true },
+    { "object_id": "KITCHEN_WALL_LEFT_001", "object_name": "Left Wall", "object_type": "wall", "position": [-3.0, 1.35, 0], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [0.12, 2.7, 5.0], "material_id": "MAT_CREAM_PAINT", "locked": true },
+    { "object_id": "KITCHEN_WALL_RIGHT_001", "object_name": "Right Wall", "object_type": "wall", "position": [3.0, 1.35, 0], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [0.12, 2.7, 5.0], "material_id": "MAT_CREAM_PAINT", "locked": true },
+    { "object_id": "KITCHEN_WALL_FRONT_001", "object_name": "Front Wall Partial", "object_type": "wall", "position": [1.85, 1.35, 2.5], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [2.2, 2.7, 0.12], "material_id": "MAT_CREAM_PAINT", "locked": true },
+    { "object_id": "KITCHEN_WINDOW_001", "object_name": "Back Window", "object_type": "window", "position": [0.0, 1.55, -2.43], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [1.8, 1.25, 0.08], "material_id": "MAT_WINDOW_GLASS", "locked": true },
+    { "object_id": "KITCHEN_SINK_001", "object_name": "Sink", "object_type": "sink", "position": [0.0, 0.92, -2.12], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [0.72, 0.16, 0.42], "material_id": "MAT_SINK_METAL", "locked": true },
+    { "object_id": "KITCHEN_CABINET_BACK_001", "object_name": "Back Base Cabinets", "object_type": "base_cabinet", "position": [0.15, 0.45, -2.18], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [3.4, 0.9, 0.58], "material_id": "MAT_CABINET_CREAM", "locked": true },
+    { "object_id": "KITCHEN_CABINET_UPPER_001", "object_name": "Upper Cabinets", "object_type": "upper_cabinet", "position": [0.15, 2.18, -2.22], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [3.4, 0.62, 0.36], "material_id": "MAT_CABINET_CREAM", "locked": true },
+    { "object_id": "KITCHEN_FRIDGE_001", "object_name": "Refrigerator", "object_type": "refrigerator", "position": [-2.28, 0.95, -1.85], "rotation": [0, 0.18, 0], "scale": [1, 1, 1], "dimensions": [0.78, 1.9, 0.72], "material_id": "MAT_WHITE_APPLIANCE", "locked": true },
+    { "object_id": "KITCHEN_ISLAND_001", "object_name": "Island", "object_type": "island", "position": [0.08, 0.46, 0.18], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [1.7, 0.92, 0.85], "material_id": "MAT_CABINET_CREAM", "locked": true },
+    { "object_id": "KITCHEN_TABLE_001", "object_name": "Table", "object_type": "table", "position": [1.88, 0.38, 0.52], "rotation": [0, 0.08, 0], "scale": [1, 1, 1], "dimensions": [1.15, 0.76, 0.7], "material_id": "MAT_WARM_WOOD_FURNITURE", "locked": true },
+    { "object_id": "KITCHEN_STOOL_001", "object_name": "Stool", "object_type": "stool", "position": [1.55, 0.28, 1.12], "rotation": [0, 0.4, 0], "scale": [1, 1, 1], "dimensions": [0.36, 0.56, 0.36], "material_id": "MAT_WARM_WOOD_FURNITURE", "locked": true },
+    { "object_id": "KITCHEN_DOORWAY_001", "object_name": "Doorway", "object_type": "doorway", "position": [-2.94, 1.05, 0.45], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [0.14, 2.1, 0.95], "material_id": "MAT_SOFT_WHITE_TRIM", "locked": true },
+    { "object_id": "KITCHEN_PLANT_001", "object_name": "Window Plant", "object_type": "plant", "position": [0.72, 1.08, -2.05], "rotation": [0, 0, 0], "scale": [1, 1, 1], "dimensions": [0.18, 0.28, 0.18], "material_id": "MAT_LIGHT_SAGE", "locked": true }
+  ],
+  "story_props": [
+    { "object_id": "COOKIE_001", "object_name": "Cookie", "object_type": "story_prop", "position": [0.22, 0.96, 0.12], "rotation": [0, 0.3, 0], "dimensions": [0.12, 0.04, 0.12], "held_by": null }
+  ],
+  "placeholders": [
+    { "object_id": "MILO_PLACEHOLDER", "object_name": "Milo", "object_type": "character_placeholder", "position": [1.15, 0.0, 0.95], "rotation": [0, 2.4, 0], "height": 0.42 }
+  ]
+}
