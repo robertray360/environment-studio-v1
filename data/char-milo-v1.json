@@ -1,0 +1,38 @@
+{
+  "character_id": "CHAR_MILO_001",
+  "character_version": "1.0",
+  "name": "Milo",
+  "species": "orange tabby cat",
+  "source": {
+    "type": "procedural",
+    "builder": "buildProceduralMilo",
+    "future_glb": "characters/Milo.glb"
+  },
+  "scale_constant": 1.0,
+  "grounded": true,
+  "floor_y": 0.03,
+  "default_instance": {
+    "position": [0.55, 0.03, 0.72],
+    "rotation": [0, 0.55, 0],
+    "scale": [1, 1, 1]
+  },
+  "identity": {
+    "fur": "warm orange tabby",
+    "chest": "white patch",
+    "paws": "white front tips",
+    "eyes": "green",
+    "collar": "blue",
+    "left_ear": "small notch",
+    "build": "medium slightly chunky",
+    "expression": "curious / slightly mischievous"
+  },
+  "materials": [
+    { "material_id": "MAT_MILO_ORANGE", "color": "#E07A2F", "roughness": 0.78, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_STRIPE", "color": "#8A3E16", "roughness": 0.8, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_WHITE", "color": "#F4EEE6", "roughness": 0.72, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_GREEN_EYE", "color": "#4CAF50", "roughness": 0.22, "metalness": 0.05 },
+    { "material_id": "MAT_MILO_PUPIL", "color": "#1A120C", "roughness": 0.35, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_NOSE", "color": "#5C2A2A", "roughness": 0.4, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_BLUE_COLLAR", "color": "#2E6BDB", "roughness": 0.45, "metalness": 0.08 }
+  ]
+}
