@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShortVidReel — 3D Environment Studio · Milo Kitchen v1.0</title>
+  <link rel="stylesheet" href="./css/studio.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        Environment Studio
+        <small>ShortVidReel · 3D Set Source of Truth</small>
+      </div>
+      <div class="lock-pill">MILO KITCHEN v1.0 — LOCKED</div>
+    </header>
+
+    <aside class="side">
+      <h2>View</h2>
+      <div class="tools">
+        <button class="tool" id="btn-orbit">Orbit</button>
+        <button class="tool" id="btn-reset">Reset</button>
+        <button class="tool" id="btn-top">Top</button>
+        <button class="tool" id="btn-front">Front</button>
+        <button class="tool" id="btn-side">Side</button>
+        <button class="tool" id="btn-helpers">Cam Helpers</button>
+      </div>
+      <h2>Cameras</h2>
+      <div id="camera-list"></div>
+      <h2>Render</h2>
+      <button class="tool" id="btn-render">Render Camera Frame</button>
+      <button class="tool" id="btn-render-all">Render All Five</button>
+      <h2>Export</h2>
+      <button class="tool" id="btn-export-json">Export Scene JSON</button>
+      <button class="tool" id="btn-export-glb">Export GLB</button>
+    </aside>
+
+    <div class="viewport-wrap">
+      <canvas id="viewport"></canvas>
+      <div id="status">Loading canonical scene…</div>
+    </div>
+
+    <aside class="side right">
+      <h2>Environment</h2>
+      <div id="info-panel"></div>
+      <h2>Permanent Objects</h2>
+      <ul id="object-list"></ul>
+    </aside>
+
+    <section class="frames" id="frame-strip"></section>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
