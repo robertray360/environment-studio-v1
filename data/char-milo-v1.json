@@ -5,9 +5,9 @@
   "species": "orange tabby cat",
   "source": {
     "type": "glb",
-    "url": "./assets/characters/milo-v1.glb",
+    "url": "./assets/characters/milo-v1.glb?v=2",
     "builder": "buildProceduralMilo",
-    "future_glb": "./assets/characters/milo-v1.glb"
+    "future_glb": "./assets/characters/milo-v1.glb?v=2"
   },
   "scale_constant": 1.0,
   "grounded": true,
