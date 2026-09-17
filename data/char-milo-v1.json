@@ -4,9 +4,10 @@
   "name": "Milo",
   "species": "orange tabby cat",
   "source": {
-    "type": "procedural",
+    "type": "glb",
+    "url": "./assets/characters/milo-v1.glb",
     "builder": "buildProceduralMilo",
-    "future_glb": "characters/Milo.glb"
+    "future_glb": "./assets/characters/milo-v1.glb"
   },
   "scale_constant": 1.0,
   "grounded": true,
@@ -33,6 +34,11 @@
     { "material_id": "MAT_MILO_GREEN_EYE", "color": "#4CAF50", "roughness": 0.22, "metalness": 0.05 },
     { "material_id": "MAT_MILO_PUPIL", "color": "#1A120C", "roughness": 0.35, "metalness": 0.0 },
     { "material_id": "MAT_MILO_NOSE", "color": "#5C2A2A", "roughness": 0.4, "metalness": 0.0 },
-    { "material_id": "MAT_MILO_BLUE_COLLAR", "color": "#2E6BDB", "roughness": 0.45, "metalness": 0.08 }
+    { "material_id": "MAT_MILO_BLUE_COLLAR", "color": "#2E6BDB", "roughness": 0.45, "metalness": 0.08 },
+    { "material_id": "MAT_MILO_COLLAR_BLUE", "color": "#2E6BDB", "roughness": 0.45, "metalness": 0.08 },
+    { "material_id": "MAT_MILO_EYE_GREEN", "color": "#4CAF50", "roughness": 0.22, "metalness": 0.05 },
+    { "material_id": "MAT_MILO_PINK_EAR", "color": "#E8A090", "roughness": 0.55, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_SCLERA", "color": "#FFF8F0", "roughness": 0.35, "metalness": 0.0 },
+    { "material_id": "MAT_MILO_BELL", "color": "#E6C35C", "roughness": 0.3, "metalness": 0.55 }
   ]
 }
