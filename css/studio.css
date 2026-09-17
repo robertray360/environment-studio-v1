@@ -34,6 +34,19 @@ h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: v
 .frames figure { margin: 0; }
 .frames img { height: 128px; border: 1px solid var(--line); border-radius: 4px; }
 .frames figcaption { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.side { overflow-y: auto; }
+.milo-source {
+  font-size: 11px;
+  color: var(--muted);
+  background: #2a241c;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 0 0 8px;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+.milo-source.error { color: #e8a090; border-color: #8a3e16; }
 #info-panel { font-size: 12px; color: var(--muted); }
 #info-panel div { margin-bottom: 4px; }
 
