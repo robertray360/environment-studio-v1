@@ -5,6 +5,11 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
+import {
+  loadCharacter,
+  applyInstance,
+  characterInstancePayload,
+} from "./character.js";
 
 const STATE = {
   sceneData: null,
@@ -16,7 +21,9 @@ const STATE = {
   previewCam: null,
   objectMeshes: new Map(),
   cameraHelpers: new Map(),
-  placeholder: null,
+  milo: null,
+  characterDef: null,
+  miloHome: null,
   locked: true,
   viewMode: "orbit",
   frames: [],
@@ -268,28 +275,6 @@ function buildScene(data) {
     cookie.name = p.object_id;
     scene.add(cookie);
   }
-  const ph = data.placeholders?.[0];
-  if (ph) {
-    const g = new THREE.Group();
-    const body = new THREE.Mesh(
-      new THREE.CapsuleGeometry(0.11, 0.18, 6, 12),
-      new THREE.MeshStandardMaterial({ color: "#5A4634", roughness: 0.6 })
-    );
-    body.position.y = 0.22;
-    const earL = new THREE.Mesh(
-      new THREE.ConeGeometry(0.04, 0.08, 6),
-      new THREE.MeshStandardMaterial({ color: "#5A4634" })
-    );
-    earL.position.set(-0.05, 0.4, 0);
-    const earR = earL.clone();
-    earR.position.x = 0.05;
-    g.add(body, earL, earR);
-    g.position.set(...ph.position);
-    g.rotation.set(...ph.rotation);
-    g.name = ph.object_id;
-    scene.add(g);
-    STATE.placeholder = g;
-  }
   return scene;
 }
 
@@ -422,11 +407,70 @@ function exportGLB() {
 }
 
 function exportSceneJSON() {
-  const blob = new Blob([JSON.stringify(STATE.sceneData, null, 2)], { type: "application/json" });
+  const payload = {
+    environment: STATE.sceneData,
+    character_instance: STATE.milo && STATE.characterDef
+      ? characterInstancePayload(STATE.milo, STATE.characterDef)
+      : null,
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = "milo-kitchen-v1.0.scene.json";
   a.click();
+}
+
+const FLOOR_Y = 0.03;
+const STEP = 0.12;
+const TURN = 0.25;
+
+function miloOnFloor() {
+  if (!STATE.milo) return;
+  STATE.milo.position.y = FLOOR_Y;
+}
+
+function bindMiloControls() {
+  const go = (dx, dz) => {
+    if (!STATE.milo) return;
+    STATE.milo.position.x += dx;
+    STATE.milo.position.z += dz;
+    miloOnFloor();
+  };
+  document.getElementById("btn-milo-hide").onclick = () => {
+    if (!STATE.milo) return;
+    STATE.milo.visible = !STATE.milo.visible;
+    document.getElementById("btn-milo-hide").textContent = STATE.milo.visible ? "Hide Milo" : "Show Milo";
+  };
+  document.getElementById("btn-milo-reset").onclick = () => {
+    if (!STATE.milo || !STATE.miloHome) return;
+    applyInstance(STATE.milo, STATE.miloHome, FLOOR_Y);
+    STATE.milo.visible = true;
+    document.getElementById("btn-milo-hide").textContent = "Hide Milo";
+  };
+  document.getElementById("btn-milo-left").onclick = () => { STATE.milo.rotation.y += TURN; };
+  document.getElementById("btn-milo-right").onclick = () => { STATE.milo.rotation.y -= TURN; };
+  document.getElementById("btn-milo-fwd").onclick = () => {
+    const y = STATE.milo.rotation.y;
+    go(Math.sin(y) * STEP, Math.cos(y) * STEP);
+  };
+  document.getElementById("btn-milo-back").onclick = () => {
+    const y = STATE.milo.rotation.y;
+    go(-Math.sin(y) * STEP, -Math.cos(y) * STEP);
+  };
+  document.getElementById("btn-milo-strafe-l").onclick = () => {
+    const y = STATE.milo.rotation.y;
+    go(Math.cos(y) * STEP, -Math.sin(y) * STEP);
+  };
+  document.getElementById("btn-milo-strafe-r").onclick = () => {
+    const y = STATE.milo.rotation.y;
+    go(-Math.cos(y) * STEP, Math.sin(y) * STEP);
+  };
+  document.getElementById("btn-milo-scale-up").onclick = () => {
+    STATE.milo.scale.multiplyScalar(1.08);
+  };
+  document.getElementById("btn-milo-scale-dn").onclick = () => {
+    STATE.milo.scale.multiplyScalar(1 / 1.08);
+  };
 }
 
 function onResize() {
@@ -467,6 +511,19 @@ async function boot() {
   STATE.orbitCam.position.set(2.15, 1.65, 2.05);
   STATE.scene = buildScene(data);
   addCameraHelpers(data, STATE.scene);
+  const charRes = await fetch("./data/char-milo-v1.json");
+  STATE.characterDef = await charRes.json();
+  STATE.milo = await loadCharacter(STATE.characterDef);
+  STATE.milo.name = "CHAR_MILO_001";
+  STATE.milo.visible = true;
+  STATE.miloHome = {
+    position: [...(STATE.characterDef.default_instance.position || [0.55, 0.03, 0.72])],
+    rotation: [...(STATE.characterDef.default_instance.rotation || [0, 0.55, 0])],
+    scale: [...(STATE.characterDef.default_instance.scale || [1, 1, 1])],
+  };
+  applyInstance(STATE.milo, STATE.miloHome, FLOOR_Y);
+  STATE.scene.add(STATE.milo);
+  bindMiloControls();
   STATE.controls = new OrbitControls(STATE.orbitCam, canvas);
   STATE.controls.target.set(0, 0.9, 0);
   STATE.controls.enableDamping = true;
@@ -474,7 +531,7 @@ async function boot() {
   onResize();
   window.addEventListener("resize", onResize);
   animate();
-  setStatus("Milo Kitchen v1.0 LOCKED — spatial source of truth loaded");
+  setStatus("Milo Kitchen v1.0 LOCKED + CHAR_MILO_001 v1.0 — same cat, same set");
 }
 
 document.getElementById("btn-orbit").onclick = orbitMode;
